@@ -1,0 +1,1 @@
+Ana,A1,0;Barry,B2,0;Claudia,C3,0;Deivy,D4,1;Eucaris,E5,0;Elkin,E6,1;Fabian,F7,0;Gina,G8,0;Harold,H9,0;Juan,J10,1
