@@ -38,13 +38,24 @@ public class FRMValoresElecs extends JFrame implements ActionListener {
         setResizable(false);
         setLocationRelativeTo(null);
     }
-    public void llenarTablaElecs() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-        String consulta="select * from usolar";
+    public static void llenarTablaElecs() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+        String consulta="select * from electrodomesticos";
         Connection cnx = Conectar.Conexion();
         Statement s = cnx.createStatement();
         ResultSet resultado = s.executeQuery(consulta);
         while (resultado.next()){
-            //Encuentro una coincidencia, creo el objeto
+            FRMInicio.modelElecs.addRow(new Object[] {resultado.getString("nombre")
+                    ,resultado.getInt("vatios")
+                    ,resultado.getInt("horasuso"),resultado.getInt("minutosuso")
+                    ,consultarKWH(resultado.getInt("vatios"),resultado.getInt("horasuso"),resultado.getInt("minutosuso"),resultado.getInt("cantidad"))});
+            Electrodomestico.cantElects++;
+        }
+    }
+    public static float consultarKWH(int vatios,int horasuso, int minutosuso, int cantidad) {
+        if (horasuso==0){
+            return (float) vatios /1000*minutosuso*cantidad;
+        }else {
+            return (float) vatios /1000*horasuso+minutosuso*cantidad;
         }
     }
 }

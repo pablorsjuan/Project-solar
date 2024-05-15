@@ -38,4 +38,7 @@ public class FRMValoresPanel extends JFrame implements ActionListener {
         setResizable(false);
         setLocationRelativeTo(null);
     }
+    public static void llenarTablaPanel(){
+        FRMInicio.modelPanel.addRow(new Object[] {"Trabajo en proceso ..."});
+    }
 }

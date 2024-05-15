@@ -22,13 +22,17 @@ public class FRMInicio extends JFrame implements ActionListener {
     static JMenuBar JmenuBar;
     static JMenu menuOpciones, menuAdmin;
     static JMenuItem miLogin, miSalir, miAdUsuarios, miAdLogs;
-    static JButton btnElecs, btnResult, btnPanel;
+    static JButton btnElecs, btnResult, btnPanel, btnActualizar;
     static JTable tablaElecs, tablaResult, tablaPanel;
     static DefaultTableModel modelElecs, modelResult, modelPanel;
     static JScrollPane scpnElecs, scpnResult, scpnPanel;
+    static JLabel llActualizar, llTexto;
     //todo############-Action Listener-############
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(btnActualizar)){
+            FRMValoresResult.llenarTablaResult();
+        }
         if (e.getSource().equals(btnElecs)){
             Iniciador.valoresElecsVentana.setVisible(true);
             this.setVisible(false);
@@ -71,17 +75,25 @@ public class FRMInicio extends JFrame implements ActionListener {
     //todo############-Constructor-############
     public FRMInicio(){
         //Creación de elementos
-        btnElecs=new JButton(valores);
+        btnElecs=new JButton("Modificar");
         btnElecs.setBounds(tile*13,tile*37,tile*8,height);
         btnElecs.addActionListener(this);
-
         btnResult =new JButton(valores);
         btnResult.setBounds(tile*43,tile*18,tile*9,height);
         btnResult.addActionListener(this);
-
         btnPanel=new JButton(valores);
         btnPanel.setBounds(tile*43,tile*37,tile*9,height);
         btnPanel.addActionListener(this);
+        btnActualizar=new JButton("Actualizar");
+        btnActualizar.setBounds(tile,tile,tile*8,height);
+        btnActualizar.addActionListener(this);
+        btnActualizar.setBackground(Color.CYAN);
+        llActualizar=new JLabel("Se actualizan los datos editados",SwingConstants.CENTER);
+        llActualizar.setBounds(tile*10,tile,tile*21,height);
+        llActualizar.setBorder(BorderFactory.createLineBorder(Color.CYAN,3,true));
+        llTexto=new JLabel("Recuadro en proceso",SwingConstants.CENTER);
+        llTexto.setBounds(tile,tile*4,tile*30,tile*16);
+        llTexto.setBorder(BorderFactory.createLineBorder(Color.white,3,true));
 
         //Creación de tablaElecs
         modelElecs=new DefaultTableModel();
@@ -89,30 +101,43 @@ public class FRMInicio extends JFrame implements ActionListener {
         scpnElecs=new JScrollPane(tablaElecs);
         modelElecs.addColumn("Electrodoméstico");
         modelElecs.addColumn("Vatios");
-        modelElecs.addColumn("Horas de uso");
+        modelElecs.addColumn("Horas");
+        modelElecs.addColumn("Minutos");
         modelElecs.addColumn("KWh");
-            //Llamo al método de la clase que meterá los datos en la tabla
+        tablaElecs.setRowHeight(height);
+        tablaElecs.setBackground(Color.darkGray);
+        tablaElecs.setForeground(Color.white);
+        try {
+            FRMValoresElecs.llenarTablaElecs();
+        } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
         scpnElecs.setLocation(tile,tile*21);
         scpnElecs.setSize(tile*30,tile*16);
 
         //Creación de tablaResult
         modelResult =new DefaultTableModel();
         tablaResult =new JTable(modelResult);
-        //tablaResult.setBackground(Color.green);
-        //tablaResult.setForeground(Color.RED);
+        tablaResult.setBackground(Color.darkGray);
+        tablaResult.setForeground(Color.white);
+        tablaResult.setRowHeight(height);
         scpnResult =new JScrollPane(tablaResult);
         modelResult.addColumn("Resultados");
-        modelResult.addRow(new Object[] {"Cantidad de objetos: "+Electrodomestico.getCantElects()});
+        FRMValoresResult.llenarTablaResult();
         scpnResult.setLocation(vWidth/2,tile);
         scpnResult.setSize(tile*30,tile*17);
 
         //Creación de tablaPanel
         modelPanel=new DefaultTableModel();
         tablaPanel=new JTable(modelPanel);
+        tablaPanel.setRowHeight(height);
+        tablaPanel.setBackground(Color.darkGray);
+        tablaPanel.setForeground(Color.GREEN);
         scpnPanel=new JScrollPane(tablaPanel);
         modelPanel.addColumn("Resultados con panel solar");
         scpnPanel.setLocation(vWidth/2,tile*21);
         scpnPanel.setSize(tile*30,tile*16);
+        FRMValoresPanel.llenarTablaPanel();
 
         //Menu bar
         JmenuBar =new JMenuBar();
@@ -143,6 +168,9 @@ public class FRMInicio extends JFrame implements ActionListener {
         add(btnElecs);
         add(btnResult);
         add(btnPanel);
+        add(btnActualizar);
+        add(llActualizar);
+        add(llTexto);
 
         //Creación de ventana
         setLayout(null);

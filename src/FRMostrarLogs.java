@@ -48,11 +48,6 @@ public class FRMostrarLogs extends JFrame implements ActionListener {
 
         //Tabla
         LeerTXT.leer_escribir("login.log.txt");
-        /*for (int i = 0; i < tabla.getColumnCount(); i++) {
-            for (int j = 0; j < tabla.getRowCount(); j++) {
-                System.out.println(tabla.getValueAt(j,i));
-            }
-        }*/ //En vez de usar el nombre, se debería usar un ID único, de otro modo, podría dar problemas
 
         //Añadir elementos
         add(btnRegresar);
