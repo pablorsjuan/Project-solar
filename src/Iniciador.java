@@ -1,5 +1,4 @@
 import java.awt.*;
-
 public class Iniciador {
     static private final int vWidthLogin=600, vHeightLogin=500;
     static Color color = Color.lightGray;
@@ -44,4 +43,6 @@ public class Iniciador {
     //Métodos
     public int getvWidthLogin() {return vWidthLogin;}
     public int getvHeightLogin() {return vHeightLogin;}
+    /*todo segun el profe javier, hay que poner varios estratos y no tener mucho en cuenta las empresas
+    *  para reducir el público objetivo*/
 }

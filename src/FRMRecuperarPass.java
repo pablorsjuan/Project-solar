@@ -27,6 +27,7 @@ public class FRMRecuperarPass extends JFrame implements ActionListener {
         imgRegresar=new ImageIcon(".\\img\\return.png");
         btnRegresar=new JButton(imgRegresar);
         btnRegresar.setBounds(tile,tile,tile*3,height);
+        btnRegresar.setBorder(BorderFactory.createBevelBorder(1,Color.DARK_GRAY,Color.WHITE));
         btnRegresar.addActionListener(this);
 
         llCorreo=new JLabel("Ingrese su correo electrónico", SwingConstants.CENTER);
@@ -34,10 +35,12 @@ public class FRMRecuperarPass extends JFrame implements ActionListener {
 
         txCorreo=new JTextField("MiCorreo@gmail.com");
         txCorreo.setForeground(Color.DARK_GRAY);
+        txCorreo.setBorder(BorderFactory.createLineBorder(Color.white,5,true));
         txCorreo.setBounds(vWidth/2-tile*9,tile*3,tile*18,height);
 
         btnGuardar=new JButton("Guardar");
         btnGuardar.setBounds(vWidth/2-tile*3,tile*6,tile*6,height);
+        btnGuardar.setBorder(BorderFactory.createBevelBorder(1,Color.DARK_GRAY,Color.WHITE));
         btnGuardar.addActionListener(this);
 
         llNotificacion=new JLabel("", SwingConstants.CENTER);

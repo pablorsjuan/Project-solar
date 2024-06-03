@@ -1,0 +1,9 @@
+Potencia nominal: La potencia nominal de un panel solar se refiere a la cantidad máxima de energía eléctrica que puede generar bajo condiciones específicas. Por lo general, se mide en vatios (W). Esta cifra representa la capacidad de generación de energía del panel cuando está expuesto a una radiación solar estándar (1000 W/m²) y a una temperatura de célula de 25 °C. Es importante tener en cuenta que la potencia nominal puede variar según el fabricante y el modelo del panel.
+
+Eficiencia: La eficiencia de un panel solar indica qué tan bien convierte la luz solar en electricidad. Se expresa como un porcentaje y representa la relación entre la energía eléctrica generada y la energía solar incidente. Los paneles más eficientes pueden convertir hasta el 20% de la energía solar en electricidad utilizable. La eficiencia puede verse afectada por factores como la ubicación geográfica, el ángulo de instalación y las condiciones climáticas.
+
+Tolerancia: La tolerancia se refiere a la variación permitida en la potencia nominal del panel. Por ejemplo, si un panel tiene una tolerancia del +/- 5%, significa que su potencia real puede ser hasta un 5% mayor o menor que la potencia nominal declarada. Esta variación se debe a pequeñas diferencias en la fabricación y las condiciones de prueba.
+
+Voltaje de circuito abierto (Voc): El voltaje de circuito abierto es la tensión eléctrica que se obtiene cuando no hay carga conectada al panel. En otras palabras, es el voltaje máximo que el panel puede generar sin estar conectado a ningún dispositivo o carga. Se mide en voltios (V).
+
+Corriente de cortocircuito (Isc): La corriente de cortocircuito es la corriente eléctrica máxima que fluye a través del panel cuando se conectan los terminales positivo y negativo directamente (sin carga). Es el valor máximo de corriente que el panel puede proporcionar. Se mide en amperios (A).

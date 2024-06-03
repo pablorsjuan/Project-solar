@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -8,7 +9,7 @@ import java.sql.Statement;
 public class FRMValoresPanel extends JFrame implements ActionListener {
     //todo############-Atributos-############
     static final int tile=16;
-    static int height=tile*2, vWidth=16*64, vHeight=16*44;
+    static int height=tile*2, vWidth=tile*94, vHeight=tile*50;
     static JButton btnRegresar;
     static ImageIcon imgRegresar;
     //todo############-Action Listener-############
@@ -25,6 +26,7 @@ public class FRMValoresPanel extends JFrame implements ActionListener {
         imgRegresar=new ImageIcon(".\\img\\return.png");
         btnRegresar=new JButton(imgRegresar);
         btnRegresar.setBounds(tile,tile,tile*3,height);
+        btnRegresar.setBorder(BorderFactory.createBevelBorder(1, Color.DARK_GRAY,Color.WHITE));
         btnRegresar.addActionListener(this);
 
         //Añadir elementos

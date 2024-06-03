@@ -15,7 +15,7 @@ public class FRMLogin extends JFrame implements ActionListener {
     static JButton btnIngresar, btnOlvidoPass, btnRegistrar;
     //todo############-Action Listener-############
     @Override
-    public void actionPerformed(ActionEvent e) { //Tal vez pueda encerrar todo en un try catch
+    public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(btnIngresar)){
             try{if (Usuarios.validarUsuario(txUsuario.getText().toLowerCase(),passContrasena.getText().toLowerCase())){
                 if (Usuarios.validarAdmin(txUsuario.getText().toLowerCase(),passContrasena.getText().toLowerCase())){
@@ -27,7 +27,7 @@ public class FRMLogin extends JFrame implements ActionListener {
                 EscribirTXT.escribir(ingreso);
                 Iniciador.inicioVentana.setVisible(true);
                 this.setVisible(false);
-                JOptionPane.showMessageDialog(null,"Los datos mostrados son aproximados");
+                //JOptionPane.showMessageDialog(null,"Los datos mostrados son aproximados");
             } else {
                 llNotificacion.setForeground(Color.RED);
                 llNotificacion.setText("Usuario o contraseña inválidos");
@@ -68,17 +68,17 @@ public class FRMLogin extends JFrame implements ActionListener {
         btnIngresar=new JButton("Ingresar");
         btnIngresar.setBounds(vWidth/2-tile*9,tile*19,tile*6,height);
         btnIngresar.addActionListener(this);
-        btnIngresar.setBorder(BorderFactory.createLineBorder(Color.WHITE,5));
+        btnIngresar.setBorder(BorderFactory.createBevelBorder(1,Color.DARK_GRAY,Color.WHITE));
 
         btnRegistrar=new JButton("Registrar");
         btnRegistrar.setBounds(vWidth/2+tile*3,tile*19,tile*6,height);
         btnRegistrar.addActionListener(this);
-        btnRegistrar.setBorder(BorderFactory.createLineBorder(Color.WHITE,5));
+        btnRegistrar.setBorder(BorderFactory.createBevelBorder(1,Color.DARK_GRAY,Color.WHITE));
 
         btnOlvidoPass=new JButton("¿Olvidó su contraseña?");
         btnOlvidoPass.addActionListener(this);
         btnOlvidoPass.setBounds(vWidth/2-tile*6,tile*22,tile*12,height);
-        btnOlvidoPass.setBorder(BorderFactory.createLineBorder(Color.WHITE,5));
+        btnOlvidoPass.setBorder(BorderFactory.createBevelBorder(1,Color.DARK_GRAY,Color.WHITE));
         btnOlvidoPass.setVisible(false);
 
         llNotificacion=new JLabel("",SwingConstants.CENTER);
