@@ -27,7 +27,7 @@ public class FRMLogin extends JFrame implements ActionListener {
                 EscribirTXT.escribir(ingreso);
                 Iniciador.inicioVentana.setVisible(true);
                 this.setVisible(false);
-                //JOptionPane.showMessageDialog(null,"Los datos mostrados son aproximados");
+                JOptionPane.showMessageDialog(null,"Los datos mostrados son aproximados");
             } else {
                 llNotificacion.setForeground(Color.RED);
                 llNotificacion.setText("Usuario o contraseña inválidos");
