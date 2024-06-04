@@ -25,6 +25,7 @@ public class Hilo extends Thread{
             FRMInicio.tablaResult.setGridColor(Color.green);
             FRMInicio.scpnElecs.setBorder(BorderFactory.createLineBorder(Color.green,3,true));
             FRMInicio.tablaElecs.setGridColor(Color.green);
+            FRMInicio.tablaPanel.setGridColor(Color.green);
             sleep(milisCortos);
             FRMInicio.llepe.setBorder(BorderFactory.createLineBorder(Color.gray,3,true));
             FRMInicio.llEstrato.setBorder(BorderFactory.createLineBorder(Color.gray,3,true));
@@ -35,6 +36,7 @@ public class Hilo extends Thread{
             FRMInicio.tablaResult.setGridColor(Color.gray);
             FRMInicio.scpnElecs.setBorder(BorderFactory.createLineBorder(Color.gray,3,true));
             FRMInicio.tablaElecs.setGridColor(Color.gray);
+            FRMInicio.tablaPanel.setGridColor(Color.gray);
             sleep(milisCortos);
             sleep(milisLargo);
         }

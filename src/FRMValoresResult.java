@@ -15,8 +15,7 @@ public class FRMValoresResult extends JFrame implements ActionListener {
     private static int estrato=2;
     static JButton btnRegresar, btnGuardar;
     static ImageIcon imgRegresar;
-    static JPanel jPanel, jPanelInfo;
-    static JTextArea txaInfo;
+    static JPanel jPanel;
     static JLabel llEmpresa, llEstrato, llCostoKWH, llNoti;
     static JTextField txEmpresa, txEstrato, txCostoKWH;
     //todo############-Action Listener-############

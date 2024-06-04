@@ -26,7 +26,8 @@ public class FRMInicio extends JFrame implements ActionListener {
     static DefaultTableModel modelElecs, modelResult, modelPanel;
     static JScrollPane scpnElecs, scpnResult, scpnPanel;
     static JLabel llActualizar, llepe, llEstrato, llCantElecs, llCostoKWH, llPnlsSolares, llFactura;
-    static JPanel jpanelDatos, jPanelEyP, jpanleResumen;;
+    static JPanel jpanelDatos, jPanelEyP, jpanleResumen;
+    static JTextArea txaResumen;
     //todo############-Action Listener-############
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -35,8 +36,17 @@ public class FRMInicio extends JFrame implements ActionListener {
             hilo.start();
             FRMValoresResult.vaciarResult();
             FRMValoresResult.llenarTablaResult();
+            llPnlsSolares.setText("Cantidad de paneles solares: "+FRMValoresPanel.getCantPnls());
+            FRMValoresPanel.vaciarTPanel();
+            FRMValoresPanel.llenarTablaPanel();
         }
         if (e.getSource().equals(btnActivarP)){
+            if (FRMValoresPanel.isPrimeraVez()){
+                FRMValoresPanel.setCantPnls(1);
+                FRMValoresPanel.setPrimeraVez(false);
+                llPnlsSolares.setText("Cantidad de paneles solares: "+FRMValoresPanel.getCantPnls());
+                FRMValoresPanel.llenarTablaPanel();
+            }
             if (scpnPanel.isVisible() && btnPanel.isVisible()){
                 btnActivarP.setText("Panel solar: OFF");
                 btnActivarP.setBackground(Color.red);
@@ -132,9 +142,22 @@ public class FRMInicio extends JFrame implements ActionListener {
         llFactura=new JLabel("",SwingConstants.CENTER);
         llFactura.setBounds(tile*2,tile*16,tile*28,height);
         llFactura.setBorder(BorderFactory.createLineBorder(Color.GRAY,3,true));
-        llPnlsSolares=new JLabel("Cantidad de paneles solares: 0");
+        llPnlsSolares=new JLabel("Cantidad de paneles solares: "+FRMValoresPanel.getCantPnls());
         llPnlsSolares.setBounds(tile*42,tile*24,tile*29,height);
         llPnlsSolares.setBorder(BorderFactory.createLineBorder(Color.GRAY,3,true));
+
+        txaResumen=new JTextArea();
+        txaResumen.setText("En el mundo actual, se requiere usar energías \nlimpias y renovables" +
+                " donde los paneles solares \ndemuestran ser una gran opción, no solo para \nempresas sino también para las personas." +
+                "\n\nFuncionamiento de las tablas:\n•La primera tambla, cambia datos importantes " +
+                "\npara poder calcular el consumo y el coste." +
+                "\n\n•La tabla electrodomesticos muestra los \nelectrodomesticos que podría tener una persona \nde estrato 2 en su casa" +
+                ", sientase libre de \nmodificar los datos." +
+                "\n\n•La tabla de los paneles solares arroja unos datos \npara calcular como sería su ahorro usando una \ncantidad de " +
+                "paneles solares.");
+        txaResumen.setBounds(tile*74,tile*2,tile*17,tile*24);
+        txaResumen.setBorder(BorderFactory.createLineBorder(Color.white,5,true));
+
         jpanelDatos =new JPanel();
         jpanelDatos.setBounds(tile,tile*3,tile*30,tile*43);
         jpanelDatos.setBackground(Color.lightGray);
@@ -153,7 +176,7 @@ public class FRMInicio extends JFrame implements ActionListener {
         jpanleResumen.setBackground(Color.lightGray);
         jpanleResumen.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createLineBorder(Color.GRAY,3,true)
-                ,"Resumen"));
+                ,"Indicaciones"));
 
         //Creación de tablaElecs
         modelElecs=new DefaultTableModel();
@@ -204,7 +227,6 @@ public class FRMInicio extends JFrame implements ActionListener {
         scpnPanel.setLocation(tile*33,tile*27);
         scpnPanel.setSize(tile*38,tile*15);
         scpnPanel.setBorder(BorderFactory.createLineBorder(Color.green,3,true));
-        FRMValoresPanel.llenarTablaPanel();
         scpnPanel.setVisible(false);
 
         //Menu bar
@@ -245,6 +267,7 @@ public class FRMInicio extends JFrame implements ActionListener {
         add(btnActivarP);
         add(llPnlsSolares);
         add(llFactura);
+        add(txaResumen);
         //----------
         add(jpanelDatos);
         add(jPanelEyP);
